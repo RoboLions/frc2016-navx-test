@@ -32,12 +32,12 @@ public class RobotMap {
 	public static RobotDrive driveTrain;
 	public static AHRS navX;
 
-	public static void init() {
+	static {
+		navX = new AHRS(I2C.Port.kOnboard);
 		leftMotor = new CANTalon(1);
 		rightMotor = new CANTalon(2);
 		driveTrain = new RobotDrive(leftMotor, rightMotor);
 		leftEncoder = new Encoder(6, 7);
 		rightEncoder = new Encoder(8, 9);
-		navX = new AHRS(I2C.Port.kMXP);
 	}
 }
