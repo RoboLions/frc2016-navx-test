@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1261.robot;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.SerialPort;
 
 import com.kauailabs.navx.frc.AHRS;
 
@@ -33,7 +33,7 @@ public class RobotMap {
 	public static AHRS navX;
 
 	static {
-		navX = new AHRS(I2C.Port.kOnboard);
+		navX = new AHRS(SerialPort.Port.kUSB);
 		leftMotor = new CANTalon(1);
 		rightMotor = new CANTalon(2);
 		driveTrain = new RobotDrive(leftMotor, rightMotor);

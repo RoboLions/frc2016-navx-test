@@ -37,6 +37,10 @@ public class Robot extends IterativeRobot {
 //        SmartDashboard.putData("Auto mode", chooser);
 		SmartDashboard.putData("Test navX micro", new NavXMicroTestCommand());
     }
+    
+    public void allPeriodic() {
+    	SmartDashboard.putNumber("navX micro yaw", driveTrain.getNavX().getYaw());
+    }
 	
 	/**
      * This function is called once each time the robot enters Disabled mode.
@@ -49,6 +53,7 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		allPeriodic();
 	}
 
 	/**
@@ -84,6 +89,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        allPeriodic();
     }
 
     public void teleopInit() {
@@ -99,6 +105,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        allPeriodic();
     }
     
     /**
@@ -106,5 +113,6 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        allPeriodic();
     }
 }
